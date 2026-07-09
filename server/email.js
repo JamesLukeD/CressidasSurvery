@@ -1,17 +1,29 @@
 "use strict";
 
-const nodemailer = require("nodemailer");
+async function sendViaBrevo({ fromEmail, fromName, to, subject, html, text }) {
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey) throw new Error("BREVO_API_KEY is not set");
 
-function createTransporter() {
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || "587", 10),
-    secure: process.env.SMTP_SECURE === "true",
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "accept": "application/json",
+      "api-key": apiKey,
+      "content-type": "application/json",
     },
+    body: JSON.stringify({
+      sender: { name: fromName, email: fromEmail },
+      to: [{ email: to }],
+      subject,
+      htmlContent: html,
+      textContent: text,
+    }),
   });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`Brevo API ${response.status}: ${body}`);
+  }
 }
 
 function escapeHtml(str) {
@@ -163,8 +175,9 @@ async function sendConfirmationEmail(
 </body>
 </html>`;
 
-  await createTransporter().sendMail({
-    from: `"${senderName}" <${senderEmail}>`,
+  await sendViaBrevo({
+    fromEmail: senderEmail,
+    fromName: senderName,
     to: payload.email,
     subject: `Registration Confirmed \u2014 Manuka Honey Gentell: ${sessionDateFmt}`,
     text: `Thank you for registering for the Manuka Honey Gentell Education Session on ${sessionDateFmt}. Please view this email in an HTML-capable client for full details.`,
@@ -228,8 +241,9 @@ async function sendOrganiserNotification(payload, sessionDateFmt) {
 </body>
 </html>`;
 
-  await createTransporter().sendMail({
-    from: `"${senderName}" <${senderEmail}>`,
+  await sendViaBrevo({
+    fromEmail: senderEmail,
+    fromName: senderName,
     to: organiserEmail,
     subject: `New Registration: ${payload.fullName} \u2014 ${sessionDateFmt}`,
     text: `${payload.fullName} has registered for the session on ${sessionDateFmt}.`,
