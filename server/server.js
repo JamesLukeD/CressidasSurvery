@@ -231,31 +231,30 @@ app.post("/register", registrationLimiter, async (req, res) => {
     const joiningLink = process.env[config.linkEnv] || "";
     const sessionTime = process.env[config.timeEnv] || "Time to be confirmed";
 
-    // Confirmation email (non-fatal)
-    try {
-      await sendConfirmationEmail(
-        payload,
-        sessionDateFmt,
-        joiningLink,
-        sessionTime,
-      );
-    } catch (emailErr) {
+    // Respond immediately — emails send in the background
+    res.json({
+      success: true,
+      message: "Registration successful.",
+      sessionDate: sessionDateFmt,
+    });
+
+    // Confirmation email (fire-and-forget, non-fatal)
+    sendConfirmationEmail(
+      payload,
+      sessionDateFmt,
+      joiningLink,
+      sessionTime,
+    ).catch((err) =>
       console.error(
         "Confirmation email failed — registration was still saved:",
-        emailErr.message,
-      );
-    }
+        err.message,
+      ),
+    );
 
     // Organiser notification (fire-and-forget)
     sendOrganiserNotification(payload, sessionDateFmt).catch((err) =>
       console.error("Organiser notification failed:", err.message),
     );
-
-    return res.json({
-      success: true,
-      message: "Registration successful.",
-      sessionDate: sessionDateFmt,
-    });
   } catch (err) {
     console.error("Registration error:", err);
     return res.status(500).json({
