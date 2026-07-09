@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 api/node_modules/
+server/node_modules/
 
 # TypeScript build output
 api/dist/
@@ -12,6 +13,10 @@ api/local.settings.json
 .env
 .env.local
 .env.*.local
+server/.env
+
+# SQLite database (local dev only)
+server/registrations.db
 
 # OS-generated files
 .DS_Store

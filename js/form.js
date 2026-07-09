@@ -236,7 +236,7 @@
       honeypot: honeypotEl ? honeypotEl.value : "",
     };
 
-    fetch("/api/register", {
+    fetch("/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -256,7 +256,6 @@
         var data = result.data;
 
         if (status >= 200 && status < 300 && data.success) {
-          // Success
           form.hidden = true;
           var dateLabel = data.sessionDate || "your selected date";
           successDetail.textContent =
@@ -274,14 +273,14 @@
             data.message ||
               "It looks like you have already registered for this session with this email address. If you believe this is an error, please contact the education team.",
           );
+        } else if (status === 400 && data.errors && data.errors.length) {
+          setSubmitting(false);
+          showBanner("Please correct the following: " + data.errors.join("; "));
         } else if (status === 429) {
           setSubmitting(false);
           showBanner(
             "Too many requests. Please wait a few minutes before trying again.",
           );
-        } else if (status === 400 && data.errors && data.errors.length) {
-          setSubmitting(false);
-          showBanner("Please correct the following: " + data.errors.join("; "));
         } else {
           setSubmitting(false);
           showBanner(
