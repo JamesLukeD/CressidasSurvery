@@ -3,6 +3,9 @@ node_modules/
 api/node_modules/
 server/node_modules/
 
+# Lock files generated at root by postinstall (committed in server/ only)
+package-lock.json
+
 # TypeScript build output
 api/dist/
 
