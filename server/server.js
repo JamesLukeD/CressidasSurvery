@@ -223,7 +223,7 @@ app.post("/register", registrationLimiter, async (req, res) => {
     }
 
     // Write to database
-    insertRegistration(payload);
+    await insertRegistration(payload);
 
     // Session details
     const config = SESSION_CONFIG[payload.preferredSessionDate] || {};
