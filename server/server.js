@@ -163,7 +163,6 @@ function validatePayload(p) {
     placeOfWork: 200,
     contactPhoneNumber: 50,
     accessibilityRequirements: 500,
-    howDidYouHear: 200,
   };
 
   for (const [field, limit] of Object.entries(lengthLimits)) {
@@ -206,7 +205,6 @@ app.post("/register", registrationLimiter, async (req, res) => {
     contactPhoneNumber: sanitise(body.contactPhoneNumber, 50) || null,
     accessibilityRequirements:
       sanitise(body.accessibilityRequirements, 500) || null,
-    howDidYouHear: sanitise(body.howDidYouHear, 200) || null,
     gdprConsent: true,
   };
 

@@ -5,18 +5,19 @@ const { Pool } = require("pg");
 const dbUrl = process.env.DATABASE_URL;
 
 if (!dbUrl) {
-  console.error('[db] DATABASE_URL is not set — cannot connect to PostgreSQL.');
+  console.error("[db] DATABASE_URL is not set — cannot connect to PostgreSQL.");
   process.exit(1);
 }
 
-console.log('[db] DATABASE_URL present, connecting...');
+console.log("[db] DATABASE_URL present, connecting...");
 
 const pool = new Pool({
   connectionString: dbUrl,
   // Enable SSL for any remote host (Railway, Render, Supabase, etc.)
-  ssl: dbUrl.includes('localhost') || dbUrl.includes('127.0.0.1')
-    ? false
-    : { rejectUnauthorized: false },
+  ssl:
+    dbUrl.includes("localhost") || dbUrl.includes("127.0.0.1")
+      ? false
+      : { rejectUnauthorized: false },
 });
 
 async function initDb() {
@@ -62,8 +63,8 @@ async function insertRegistration(payload) {
        full_name, email, trust_organisation, profession_role,
        department_specialty, place_of_work, preferred_session_date, session_format,
        willing_to_be_contacted, contact_phone_number, accessibility_requirements,
-       how_did_you_hear, gdpr_consent
-     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`,
+       gdpr_consent
+     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
     [
       payload.fullName,
       payload.email,
@@ -76,7 +77,6 @@ async function insertRegistration(payload) {
       payload.willingToBeContacted,
       payload.contactPhoneNumber ?? null,
       payload.accessibilityRequirements ?? null,
-      payload.howDidYouHear ?? null,
       true,
     ],
   );

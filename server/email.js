@@ -219,7 +219,6 @@ async function sendOrganiserNotification(payload, sessionDateFmt) {
       "Accessibility / Dietary",
       payload.accessibilityRequirements || "\u2014",
     ),
-    row("How Did They Hear", payload.howDidYouHear || "\u2014"),
     row(
       "Submitted At",
       new Date().toLocaleString("en-GB", { timeZone: "Europe/London" }),

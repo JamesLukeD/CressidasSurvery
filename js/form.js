@@ -231,7 +231,6 @@
       preferredSessionDate: getFieldValue("preferredSessionDate"),
       willingToBeContacted: getFieldValue("willingToBeContacted") === "true",
       contactPhoneNumber: getFieldValue("contactPhoneNumber") || undefined,
-      howDidYouHear: getFieldValue("howDidYouHear") || undefined,
       gdprConsent: true,
       honeypot: honeypotEl ? honeypotEl.value : "",
     };
