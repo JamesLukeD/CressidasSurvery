@@ -1,0 +1,29 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+
+    "AZURE_TENANT_ID": "4d6e12e7-4a74-4d57-a23e-6df2030e6f5c",
+    "AZURE_CLIENT_ID": "5bcbd2eb-33c8-493e-952d-96d5b7245e4a",
+    "AZURE_CLIENT_SECRET": "<Secret Value from Azure portal — shown once at creation>",
+
+    "SHAREPOINT_SITE_ID": "gentell-my.sharepoint.com,5f0c28a6-743d-4d48-bea9-8fdaac3ec6c3,203adca0-553e-48ee-be21-bdf30b7b4434",
+    "SHAREPOINT_LIST_ID": "a6c8f53d-f13f-4a97-8b1a-34160485b8d6",
+
+    "SENDER_EMAIL": "education@gentell.com",
+    "ORGANISER_EMAIL": "organiser@gentell.com",
+
+    "JOINING_LINK_15_JULY": "https://teams.microsoft.com/l/meetup-join/...",
+    "JOINING_LINK_21_JULY": "https://teams.microsoft.com/l/meetup-join/...",
+    "JOINING_LINK_23_JULY": "https://teams.microsoft.com/l/meetup-join/...",
+
+    "SESSION_TIME_15_JULY": "10:00 \u2013 12:00",
+    "SESSION_TIME_21_JULY": "10:00 \u2013 12:00",
+    "SESSION_TIME_23_JULY": "10:00 \u2013 12:00",
+
+    "SESSION_LOCATION": "Meeting Room 1, NHS Education Centre, City",
+
+    "ALLOWED_ORIGIN": "http://localhost:4280"
+  }
+}

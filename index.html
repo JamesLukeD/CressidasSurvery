@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Register for the Manuka Honey Gentell education and training session for healthcare professionals."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Registration — Manuka Honey Gentell Education Session</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍯</text></svg>"
+    />
+    <link rel="apple-touch-icon" href="css/manuka.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" role="banner">
+      <div class="header-inner">
+        <img
+          src="css/manuka.png"
+          alt="Gentell Manuka Honey"
+          class="header-logo"
+          width="160"
+          height="160"
+        />
+        <p class="header-subtitle">
+          Education &amp; Training Session Registration
+        </p>
+      </div>
+    </header>
+
+    <main id="main-content" class="main-content">
+      <div class="container">
+        <!-- ===== Page Intro ===== -->
+        <div class="form-intro">
+          <h1 class="page-heading">Register Your Place</h1>
+          <p>
+            Complete the form below to register for one of our upcoming
+            <strong>Manuka Honey Gentell</strong> education sessions. Sessions
+            are open to healthcare professionals across the region.
+          </p>
+          <p class="required-note">
+            Fields marked with
+            <abbr title="required" aria-hidden="true">*</abbr> are required.
+          </p>
+        </div>
+
+        <noscript>
+          <div class="noscript-warning" role="alert">
+            <strong>JavaScript is required</strong> to submit this form. Please
+            enable JavaScript in your browser settings and reload the page.
+          </div>
+        </noscript>
+
+        <!-- ===== Success panel (hidden until submission succeeds) ===== -->
+        <div
+          id="success-message"
+          class="success-panel"
+          role="alert"
+          aria-live="polite"
+          tabindex="-1"
+          hidden
+        >
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h2>Registration Successful!</h2>
+          <p id="success-details">
+            Thank you for registering. A confirmation email has been sent to
+            your address with your session details and joining link.
+          </p>
+          <p>
+            If you do not receive a confirmation email within a few minutes,
+            please check your spam or junk folder, or contact the education
+            team.
+          </p>
+        </div>
+
+        <!-- ===== Global error banner (hidden until needed) ===== -->
+        <div
+          id="error-banner"
+          class="error-banner"
+          role="alert"
+          aria-live="assertive"
+          hidden
+        >
+          <p id="error-banner-message"></p>
+        </div>
+
+        <!-- ===== Registration form ===== -->
+        <form
+          id="registration-form"
+          novalidate
+          aria-label="Session registration form"
+        >
+          <!-- Section 1: Personal Details -->
+          <section class="form-section" aria-labelledby="section-personal">
+            <h2 id="section-personal" class="section-heading">
+              Personal Details
+            </h2>
+
+            <div class="form-group" id="group-fullName">
+              <label for="fullName" class="form-label">
+                Full Name
+                <span class="required-asterisk" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                class="form-control"
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="fullName-error"
+                maxlength="200"
+                spellcheck="false"
+              />
+              <span
+                id="fullName-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group" id="group-email">
+              <label for="email" class="form-label">
+                Email Address
+                <span class="required-asterisk" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="email-hint email-error"
+                maxlength="254"
+                spellcheck="false"
+                inputmode="email"
+              />
+              <span id="email-hint" class="field-hint"
+                >A confirmation email with your joining link will be sent
+                here.</span
+              >
+              <span
+                id="email-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group" id="group-contactPhoneNumber">
+              <label for="contactPhoneNumber" class="form-label">
+                Contact Phone Number
+                <span class="optional-tag">(optional)</span>
+              </label>
+              <input
+                type="tel"
+                id="contactPhoneNumber"
+                name="contactPhoneNumber"
+                class="form-control form-control--half"
+                autocomplete="tel"
+                aria-describedby="contactPhoneNumber-error"
+                maxlength="50"
+                inputmode="tel"
+              />
+              <span
+                id="contactPhoneNumber-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+          </section>
+
+          <!-- Section 2: Professional Details -->
+          <section class="form-section" aria-labelledby="section-professional">
+            <h2 id="section-professional" class="section-heading">
+              Professional Details
+            </h2>
+
+            <div class="form-group" id="group-trustOrganisation">
+              <label for="trustOrganisation" class="form-label">
+                Trust / Organisation
+                <span class="required-asterisk" aria-hidden="true">*</span>
+              </label>
+              <select
+                id="trustOrganisation"
+                name="trustOrganisation"
+                class="form-control"
+                required
+                aria-required="true"
+                aria-describedby="trustOrganisation-error"
+              >
+                <option value="">— Please select —</option>
+                <option value="Kent and Medway ICB">Kent and Medway ICB</option>
+                <option value="Maidstone and Tunbridge Wells NHS Trust">
+                  Maidstone and Tunbridge Wells NHS Trust
+                </option>
+                <option
+                  value="East Kent Hospitals University NHS Foundation Trust"
+                >
+                  East Kent Hospitals University NHS Foundation Trust
+                </option>
+                <option value="Dartford and Gravesham NHS Trust">
+                  Dartford and Gravesham NHS Trust
+                </option>
+                <option value="Kent Community Health NHS Foundation Trust">
+                  Kent Community Health NHS Foundation Trust
+                </option>
+                <option
+                  value="Kent and Medway NHS and Social Care Partnership Trust"
+                >
+                  Kent and Medway NHS and Social Care Partnership Trust
+                </option>
+                <option
+                  value="South East Coast Ambulance Service NHS Foundation Trust"
+                >
+                  South East Coast Ambulance Service NHS Foundation Trust
+                </option>
+                <option value="Primary Care Network / GP Practice">
+                  Primary Care Network / GP Practice
+                </option>
+                <option value="Community Pharmacy">Community Pharmacy</option>
+                <option value="Care Home / Nursing Home">
+                  Care Home / Nursing Home
+                </option>
+                <option value="Independent Healthcare Provider">
+                  Independent Healthcare Provider
+                </option>
+                <option value="Other">Other</option>
+              </select>
+              <span
+                id="trustOrganisation-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group" id="group-professionRole">
+              <label for="professionRole" class="form-label">
+                Profession / Role
+                <span class="required-asterisk" aria-hidden="true">*</span>
+              </label>
+              <select
+                id="professionRole"
+                name="professionRole"
+                class="form-control"
+                required
+                aria-required="true"
+                aria-describedby="professionRole-error"
+              >
+                <option value="">— Please select —</option>
+                <option value="Nurse">Nurse</option>
+                <option value="TVN (Tissue Viability Nurse)">
+                  TVN (Tissue Viability Nurse)
+                </option>
+                <option value="Podiatrist">Podiatrist</option>
+                <option value="GP">GP (General Practitioner)</option>
+                <option value="HCA">HCA (Healthcare Assistant)</option>
+                <option value="Pharmacist">Pharmacist</option>
+                <option value="Physiotherapist">Physiotherapist</option>
+                <option value="Occupational Therapist">
+                  Occupational Therapist
+                </option>
+                <option value="Community Nurse">Community Nurse</option>
+                <option value="District Nurse">District Nurse</option>
+                <option value="Other">Other</option>
+              </select>
+              <span
+                id="professionRole-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group" id="group-departmentSpecialty">
+              <label for="departmentSpecialty" class="form-label">
+                Department / Specialty
+                <span class="optional-tag">(optional)</span>
+              </label>
+              <input
+                type="text"
+                id="departmentSpecialty"
+                name="departmentSpecialty"
+                class="form-control"
+                aria-describedby="departmentSpecialty-error"
+                maxlength="200"
+                placeholder="e.g. Tissue Viability, Wound Care, Podiatry"
+              />
+              <span
+                id="departmentSpecialty-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group" id="group-placeOfWork">
+              <label for="placeOfWork" class="form-label">
+                Place of Work
+                <span class="required-asterisk" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="placeOfWork"
+                name="placeOfWork"
+                class="form-control"
+                required
+                aria-required="true"
+                aria-describedby="placeOfWork-error"
+                maxlength="200"
+                placeholder="e.g. Maidstone Hospital, St Mary's Surgery"
+              />
+              <span
+                id="placeOfWork-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+          </section>
+
+          <!-- Section 3: Session Preferences -->
+          <section class="form-section" aria-labelledby="section-session">
+            <h2 id="section-session" class="section-heading">
+              Session Preferences
+            </h2>
+
+            <fieldset class="form-fieldset" id="group-preferredSessionDate">
+              <legend class="form-label">
+                Preferred Session Date
+                <span class="required-asterisk" aria-hidden="true">*</span>
+              </legend>
+              <div
+                class="radio-group"
+                aria-describedby="preferredSessionDate-error"
+              >
+                <label class="radio-label">
+                  <input
+                    type="radio"
+                    name="preferredSessionDate"
+                    value="15-July"
+                    aria-required="true"
+                  />
+                  <span class="radio-text">
+                    <span class="radio-primary">Wednesday 15th July</span>
+                  </span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="radio"
+                    name="preferredSessionDate"
+                    value="21-July"
+                  />
+                  <span class="radio-text">
+                    <span class="radio-primary">Tuesday 21st July</span>
+                  </span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="radio"
+                    name="preferredSessionDate"
+                    value="23-July"
+                  />
+                  <span class="radio-text">
+                    <span class="radio-primary">Thursday 23rd July</span>
+                  </span>
+                </label>
+              </div>
+              <span
+                id="preferredSessionDate-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </fieldset>
+          </section>
+
+          <!-- Section 4: Additional Information -->
+          <section class="form-section" aria-labelledby="section-additional">
+            <h2 id="section-additional" class="section-heading">
+              Additional Information
+            </h2>
+
+            <fieldset class="form-fieldset" id="group-willingToBeContacted">
+              <legend class="form-label">
+                Willing to be contacted for further education?
+                <span class="required-asterisk" aria-hidden="true">*</span>
+              </legend>
+              <div
+                class="radio-group"
+                aria-describedby="willingToBeContacted-error"
+              >
+                <label class="radio-label">
+                  <input
+                    type="radio"
+                    name="willingToBeContacted"
+                    value="true"
+                    aria-required="true"
+                  />
+                  <span class="radio-text">
+                    <span class="radio-primary"
+                      >Yes, I am happy to be contacted about future education
+                      opportunities</span
+                    >
+                  </span>
+                </label>
+                <label class="radio-label">
+                  <input
+                    type="radio"
+                    name="willingToBeContacted"
+                    value="false"
+                  />
+                  <span class="radio-text">
+                    <span class="radio-primary"
+                      >No, I do not wish to be contacted</span
+                    >
+                  </span>
+                </label>
+              </div>
+              <span
+                id="willingToBeContacted-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </fieldset>
+
+            <div class="form-group" id="group-howDidYouHear">
+              <label for="howDidYouHear" class="form-label">
+                How did you hear about this session?
+                <span class="optional-tag">(optional)</span>
+              </label>
+              <select
+                id="howDidYouHear"
+                name="howDidYouHear"
+                class="form-control"
+                aria-describedby="howDidYouHear-error"
+              >
+                <option value="">— Please select —</option>
+                <option value="Email newsletter">Email newsletter</option>
+                <option value="Colleague recommendation">
+                  Colleague recommendation
+                </option>
+                <option value="Team or departmental meeting">
+                  Team or departmental meeting
+                </option>
+                <option value="Social media">
+                  Social media (LinkedIn, Twitter/X)
+                </option>
+                <option value="NHS website or intranet">
+                  NHS website or intranet
+                </option>
+                <option value="ICB communication">ICB communication</option>
+                <option value="CPD portal">CPD / Learning portal</option>
+                <option value="Other">Other</option>
+              </select>
+              <span
+                id="howDidYouHear-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+          </section>
+
+          <!-- Section 5: Data Protection & Consent -->
+          <section class="form-section" aria-labelledby="section-consent">
+            <h2 id="section-consent" class="section-heading">
+              Data Protection &amp; Consent
+            </h2>
+
+            <div class="privacy-notice" role="note" aria-label="Privacy notice">
+              <h3>How we use your information</h3>
+              <p>
+                The personal information you provide will be used to manage your
+                registration, send you a confirmation email and joining details,
+                and (if you consent) to contact you about future education
+                opportunities. Your data will be stored securely and processed
+                in accordance with UK GDPR. It will not be shared with third
+                parties outside of the organising team.
+              </p>
+            </div>
+
+            <div class="form-group checkbox-group" id="group-gdprConsent">
+              <label class="checkbox-label" for="gdprConsent">
+                <input
+                  type="checkbox"
+                  id="gdprConsent"
+                  name="gdprConsent"
+                  required
+                  aria-required="true"
+                  aria-describedby="gdprConsent-error"
+                />
+                <span class="checkbox-text">
+                  I consent to my personal data being processed for the purposes
+                  described above, in accordance with UK GDPR and the
+                  organiser's privacy policy.
+                  <span class="required-asterisk" aria-hidden="true">*</span>
+                </span>
+              </label>
+              <span
+                id="gdprConsent-error"
+                class="field-error"
+                aria-live="polite"
+              ></span>
+            </div>
+          </section>
+
+          <!-- Honeypot field — hidden from legitimate users, catches bots -->
+          <div class="honeypot-field" aria-hidden="true">
+            <label for="website">Leave this field blank</label>
+            <input
+              type="text"
+              id="website"
+              name="honeypot"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- Form actions -->
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn-primary">
+              <span class="btn-text">Register for Session</span>
+              <svg
+                class="btn-spinner"
+                aria-hidden="true"
+                hidden
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="10"
+                  cy="10"
+                  r="8"
+                  stroke="rgba(255,255,255,0.3)"
+                  stroke-width="2.5"
+                />
+                <path
+                  d="M10 2a8 8 0 0 1 8 8"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+            <p class="submit-note">
+              By submitting this form you confirm you have read and agree to the
+              data processing described above.
+            </p>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <p>
+          For questions about this session, please contact the education team.
+          For technical issues with this form, try refreshing the page or using
+          a different browser.
+        </p>
+        <p class="footer-legal">
+          Data processed in accordance with UK GDPR. &copy; 2026 Manuka Honey
+          Gentell Education Programme.
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/form.js"></script>
+  </body>
+</html>

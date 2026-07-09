@@ -1,0 +1,738 @@
+/* ============================================================
+   Manuka Honey Gentell — Registration Form
+   NHS Design System-inspired colour palette and patterns
+   ============================================================ */
+
+/* ----- Custom Properties ----------------------------------- */
+:root {
+  --nhs-blue: #005eb8;
+  --nhs-dark-blue: #003087;
+  --nhs-bright-blue: #0072ce;
+  --nhs-green: #007f3b;
+  --nhs-dark-green: #00662f;
+  --nhs-red: #da291c;
+  --nhs-yellow: #ffb81c;
+  --nhs-white: #ffffff;
+  --nhs-grey-1: #425563;
+  --nhs-grey-2: #768692;
+  --nhs-grey-4: #d8dde0;
+  --nhs-grey-5: #f0f4f5;
+  --text-primary: #212b32;
+  --focus-shadow: 0 0 0 2px #212b32;
+  --border-radius: 4px;
+  --transition: 0.15s ease;
+
+  /* Gentell brand */
+  --gentell-blue: #1b5eae;
+  --gentell-dark: #154d8d;
+  --honey-gold: #c8860a;
+  --honey-dark: #a06a08;
+  --honey-light: #fff8ec;
+  --warm-bg: #fefbf5;
+}
+
+/* ----- Reset & Base ---------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--warm-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E%F0%9F%8D%AF%3C/text%3E%3C/svg%3E")
+      0 0,
+    auto;
+}
+
+/* Restore sensible cursors for interactive and text elements */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  cursor: text;
+}
+
+a,
+button,
+select,
+label[for],
+.radio-label,
+.checkbox-label {
+  cursor: pointer;
+}
+
+/* ----- Skip link ------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 1000;
+  background: var(--text-primary);
+  color: var(--nhs-white);
+  padding: 12px 20px;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  font-weight: 700;
+  text-decoration: none;
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--nhs-yellow);
+  outline-offset: 2px;
+}
+
+/* ----- Utility: screen-reader only ------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ----- Focus styles ---------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--nhs-yellow);
+  outline-offset: 0;
+  box-shadow: var(--focus-shadow);
+}
+
+/* Remove default outline in favour of :focus-visible */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ----- Layout ---------------------------------------------- */
+.container {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 32px 0 56px;
+}
+
+/* ----- Site Header ----------------------------------------- */
+.site-header {
+  background-color: var(--nhs-white);
+  padding: 28px 0 0;
+  border-bottom: 4px solid var(--honey-gold);
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.header-inner {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header-logo {
+  display: block;
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 6px;
+}
+
+.header-subtitle {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--nhs-grey-1);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+
+/* ----- Form Intro ------------------------------------------ */
+.form-intro {
+  margin-bottom: 24px;
+  background: var(--nhs-white);
+  border: 1px solid var(--nhs-grey-4);
+  border-top: 3px solid var(--gentell-blue);
+  border-radius: 6px;
+  padding: 24px 28px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.page-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gentell-blue);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.form-intro p {
+  color: var(--nhs-grey-1);
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.required-note {
+  font-size: 0.875rem;
+  color: var(--nhs-grey-1);
+  margin-top: 4px;
+}
+
+.required-asterisk {
+  color: var(--nhs-red);
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.optional-tag {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--nhs-grey-2);
+  margin-left: 4px;
+}
+
+/* ----- Noscript Warning ------------------------------------ */
+.noscript-warning {
+  background-color: #fff3cd;
+  border: 2px solid var(--nhs-yellow);
+  border-radius: var(--border-radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+/* ----- Form Sections --------------------------------------- */
+.form-section {
+  background-color: var(--nhs-white);
+  border: 1px solid var(--nhs-grey-4);
+  border-top: 3px solid var(--honey-gold);
+  border-radius: 6px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.section-heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--gentell-blue);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  padding-left: 14px;
+  border-bottom: 2px solid var(--nhs-grey-4);
+  border-left: 4px solid var(--honey-gold);
+}
+
+/* ----- Form Groups & Labels -------------------------------- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.field-hint {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--nhs-grey-1);
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.field-error {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--nhs-red);
+  font-weight: 700;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.field-error:not(:empty)::before {
+  content: "⚠ ";
+}
+
+/* Error state on form groups and fieldsets */
+.form-group.has-error,
+.form-fieldset.has-error {
+  border-left: 4px solid var(--nhs-red);
+  padding-left: 14px;
+  margin-left: -4px;
+}
+
+.form-group.has-error .form-control,
+.form-fieldset.has-error .form-control {
+  border-color: var(--nhs-red);
+}
+
+/* ----- Inputs, Selects, Textareas -------------------------- */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px 13px;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--nhs-white);
+  border: 2px solid var(--nhs-grey-2);
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-control--half {
+  max-width: 300px;
+}
+
+.form-control:hover {
+  border-color: var(--text-primary);
+}
+
+.form-control:focus {
+  border-color: var(--gentell-blue);
+  outline: 3px solid var(--honey-gold);
+  outline-offset: 0;
+  box-shadow: var(--focus-shadow);
+}
+
+select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23212B32' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 88px;
+}
+
+/* ----- Fieldset -------------------------------------------- */
+.form-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 20px;
+  min-width: 0; /* prevents fieldset width issue in Firefox */
+}
+
+.form-fieldset:last-child {
+  margin-bottom: 0;
+}
+
+.form-fieldset > legend.form-label {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.form-fieldset > legend.form-label + * {
+  clear: both;
+}
+
+/* ----- Radio Groups ---------------------------------------- */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 10px 14px;
+  border: 2px solid var(--nhs-grey-4);
+  border-radius: var(--border-radius);
+  background-color: var(--nhs-white);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+  user-select: none;
+}
+
+.radio-label:hover {
+  background-color: var(--nhs-grey-5);
+  border-color: var(--nhs-grey-2);
+}
+
+.radio-label:has(input:checked) {
+  background-color: var(--honey-light);
+  border-color: var(--honey-gold);
+}
+
+.radio-label input[type="radio"] {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--gentell-blue);
+}
+
+.radio-label input[type="radio"]:focus-visible {
+  outline: 3px solid var(--nhs-yellow);
+  outline-offset: 2px;
+  box-shadow: var(--focus-shadow);
+}
+
+.radio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.radio-primary {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.radio-secondary {
+  font-size: 0.875rem;
+  color: var(--nhs-grey-1);
+  line-height: 1.4;
+}
+
+/* ----- Checkbox -------------------------------------------- */
+.checkbox-group {
+  margin-top: 4px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 14px 16px;
+  border: 2px solid var(--nhs-grey-4);
+  border-radius: var(--border-radius);
+  background-color: var(--nhs-white);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+  user-select: none;
+}
+
+.checkbox-label:hover {
+  background-color: var(--nhs-grey-5);
+  border-color: var(--nhs-grey-2);
+}
+
+.checkbox-label:has(input:checked) {
+  background-color: var(--honey-light);
+  border-color: var(--honey-gold);
+}
+
+.checkbox-label input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--gentell-blue);
+}
+
+.checkbox-label input[type="checkbox"]:focus-visible {
+  outline: 3px solid var(--nhs-yellow);
+  outline-offset: 2px;
+  box-shadow: var(--focus-shadow);
+}
+
+.checkbox-text {
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* ----- Privacy Notice -------------------------------------- */
+.privacy-notice {
+  background-color: var(--honey-light);
+  border-left: 4px solid var(--honey-gold);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.privacy-notice h3 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--honey-dark);
+  margin-bottom: 8px;
+}
+
+.privacy-notice p {
+  font-size: 0.9rem;
+  color: var(--nhs-grey-1);
+  line-height: 1.55;
+}
+
+/* ----- Honeypot field (hidden from legitimate users) ------- */
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  tab-size: 0;
+}
+
+/* ----- Form Actions ---------------------------------------- */
+.form-actions {
+  padding: 24px 0 4px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  font-family: inherit;
+  line-height: 1.4;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--transition),
+    transform 0.1s ease;
+  min-height: 52px;
+  letter-spacing: 0.01em;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--nhs-yellow);
+  outline-offset: 2px;
+  box-shadow: var(--focus-shadow);
+}
+
+.btn-primary {
+  background-color: var(--nhs-green);
+  color: var(--nhs-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--nhs-dark-green);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled {
+  background-color: var(--nhs-grey-2);
+  cursor: not-allowed;
+}
+
+/* Spinner SVG animation */
+.btn-spinner {
+  animation: btn-spin 0.8s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.submit-note {
+  font-size: 0.85rem;
+  color: var(--nhs-grey-1);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* ----- Success Panel --------------------------------------- */
+.success-panel {
+  background-color: var(--nhs-white);
+  border: 2px solid var(--nhs-green);
+  border-radius: var(--border-radius);
+  padding: 36px 32px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--nhs-green);
+  color: var(--nhs-white);
+  font-size: 1.75rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.success-panel h2 {
+  font-size: 1.5rem;
+  color: var(--nhs-green);
+  margin-bottom: 12px;
+}
+
+.success-panel p {
+  font-size: 1rem;
+  color: var(--nhs-grey-1);
+  margin-bottom: 10px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.success-panel p:last-child {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+/* ----- Error Banner ---------------------------------------- */
+.error-banner {
+  background-color: #fdf2f2;
+  border: 2px solid var(--nhs-red);
+  border-radius: var(--border-radius);
+  padding: 14px 20px;
+  margin-bottom: 20px;
+}
+
+.error-banner p {
+  color: var(--nhs-red);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+.error-banner p::before {
+  content: "⚠ ";
+}
+
+/* ----- Site Footer ----------------------------------------- */
+.site-footer {
+  background-color: var(--nhs-grey-1);
+  color: var(--nhs-grey-4);
+  padding: 24px 0;
+  font-size: 0.875rem;
+  margin-top: auto;
+}
+
+.site-footer .container p {
+  margin-bottom: 8px;
+  line-height: 1.55;
+}
+
+.site-footer .container p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-legal {
+  opacity: 0.7;
+  font-size: 0.8125rem;
+}
+
+/* ----- Responsive ------------------------------------------ */
+@media (max-width: 480px) {
+  .page-heading {
+    font-size: 1.4rem;
+  }
+
+  .form-section {
+    padding: 18px 16px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .form-control--half {
+    max-width: 100%;
+  }
+
+  .success-panel {
+    padding: 28px 20px;
+  }
+}
+
+@media (min-width: 600px) {
+  .container,
+  .header-inner {
+    padding: 0 24px;
+  }
+
+  .main-content {
+    padding: 40px 0 64px;
+  }
+
+  .radio-group {
+    gap: 10px;
+  }
+}
+
+@media (min-width: 740px) {
+  .container,
+  .header-inner {
+    padding: 0 32px;
+  }
+}
+
+/* ----- Print styles ---------------------------------------- */
+@media print {
+  .site-header,
+  .site-footer,
+  .form-actions,
+  .honeypot-field {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .form-section {
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+}
