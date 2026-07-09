@@ -212,7 +212,7 @@ app.post("/register", registrationLimiter, async (req, res) => {
 
   try {
     // Duplicate check
-    if (isDuplicate(payload.email, payload.preferredSessionDate)) {
+    if (await isDuplicate(payload.email, payload.preferredSessionDate)) {
       return res.status(409).json({
         success: false,
         errorType: "duplicate",
