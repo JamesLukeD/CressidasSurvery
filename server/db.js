@@ -2,12 +2,21 @@
 
 const { Pool } = require("pg");
 
+const dbUrl = process.env.DATABASE_URL;
+
+if (!dbUrl) {
+  console.error('[db] DATABASE_URL is not set — cannot connect to PostgreSQL.');
+  process.exit(1);
+}
+
+console.log('[db] DATABASE_URL present, connecting...');
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl:
-    process.env.NODE_ENV === "production"
-      ? { rejectUnauthorized: false }
-      : false,
+  connectionString: dbUrl,
+  // Enable SSL for any remote host (Railway, Render, Supabase, etc.)
+  ssl: dbUrl.includes('localhost') || dbUrl.includes('127.0.0.1')
+    ? false
+    : { rejectUnauthorized: false },
 });
 
 async function initDb() {
