@@ -40,10 +40,10 @@ app.use(express.static(path.join(__dirname, "..")));
 
 // ── Session configuration ─────────────────────────────────────
 const SESSION_CONFIG = {
-  "15-July": {
-    iso: "2026-07-15",
-    timeEnv: "SESSION_TIME_15_JULY",
-    linkEnv: "JOINING_LINK_15_JULY",
+  "30-July": {
+    iso: "2026-07-30",
+    timeEnv: "SESSION_TIME_30_JULY",
+    linkEnv: "JOINING_LINK_30_JULY",
   },
   "21-July": {
     iso: "2026-07-21",
@@ -124,7 +124,7 @@ function validatePayload(p) {
     errors.push("Place of work is required.");
   }
 
-  const validDates = ["15-July", "21-July", "23-July"];
+  const validDates = ["30-July", "21-July", "23-July"];
   if (!p.preferredSessionDate || !validDates.includes(p.preferredSessionDate)) {
     errors.push("A valid preferred session date must be selected.");
   }
