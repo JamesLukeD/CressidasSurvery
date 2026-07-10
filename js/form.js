@@ -260,9 +260,9 @@
           successDetail.textContent =
             "Thank you for registering. Your place has been reserved for " +
             dateLabel +
-            ". A confirmation email has been sent to " +
+            ". A confirmation email will be sent to " +
             payload.email +
-            " with your session details and joining link.";
+            " within 24 hours with your session details and joining link.";
           successPanel.hidden = false;
           successPanel.focus();
           successPanel.scrollIntoView({ behavior: "smooth", block: "start" });
